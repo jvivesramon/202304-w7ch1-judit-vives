@@ -7,9 +7,15 @@
   "overrides": [
     {
       "extends": ["xo-typescript", "prettier"],
-      "files": ["*.ts", "*.tsx"],
+      "files": "*.ts",
       "rules": {
         "no-unused-vars": "error"
+      }
+    },
+    {
+      "files": ["src/**/schema/*.ts"],
+      "rules": {
+        "@typescript-eslint/naming-convention": "off"
       }
     }
   ],
