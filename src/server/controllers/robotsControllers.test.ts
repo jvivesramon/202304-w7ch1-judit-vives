@@ -4,18 +4,18 @@ import Robot from "../../database/schema/Robot.js";
 import robotsMock from "../../data/robotsMock.js";
 
 describe("Given a getRobots controller", () => {
+  type CustomResponse = Pick<Response, "status" | "json">;
+
+  const request = {};
+
+  const response: CustomResponse = {
+    status: jest.fn().mockReturnThis(),
+    json: jest.fn(),
+  };
+
+  const next = jest.fn();
+
   describe("When it receives a response", () => {
-    type CustomResponse = Pick<Response, "status" | "json">;
-
-    const next = jest.fn();
-
-    const request = {};
-
-    const response: CustomResponse = {
-      status: jest.fn().mockReturnThis(),
-      json: jest.fn(),
-    };
-
     Robot.find = jest.fn().mockReturnValue({
       exec: jest.fn().mockResolvedValue(robotsMock),
     });
@@ -34,6 +34,20 @@ describe("Given a getRobots controller", () => {
       await getRobots(request as Request, response as Response, next);
 
       expect(response.json).toHaveBeenCalledWith(expectedResponseBody);
+    });
+  });
+
+  describe("When it receives a next function and the exec method rejects with an 'Fatal Error' error", () => {
+    test("Then it should call next function with error 'Fatal Error'", async () => {
+      const error = new Error("General error");
+
+      Robot.find = jest.fn().mockReturnValue({
+        exec: jest.fn().mockRejectedValue(error),
+      });
+
+      await getRobots(request as Request, response as Response, next);
+
+      expect(next).toHaveBeenCalledWith(error);
     });
   });
 });
