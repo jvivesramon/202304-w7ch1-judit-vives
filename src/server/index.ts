@@ -6,13 +6,13 @@ import { generalError, notFoundError } from "./middleware/errorControllers.js";
 
 export const app = express();
 
-const allowedHeaders = "https://202304-w6chwe-judit-vives-isaias.netlify.app/";
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://202304-w6chwe-judit-vives-isaias.netlify.app",
+];
 
-const corsOptions = {
-  origin: allowedHeaders,
-  optionsSuccessStatus: 200,
-  methods: "GET, HEAD, PUT, PATCH, POST, DELETE",
-  allowedHeaders: "Content-Type, Authorization",
+const corsOptions: cors.CorsOptions = {
+  origin: allowedOrigins,
 };
 
 app.use(cors(corsOptions));
