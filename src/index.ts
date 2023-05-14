@@ -4,7 +4,7 @@ import chalk from "chalk";
 import mongoose from "mongoose";
 import { app } from "./server/index.js";
 
-const debug = createDebug("students-api:root");
+const debug = createDebug("robots-api:root");
 
 const port = process.env.PORT ?? 4000;
 const mongoDbConnection = process.env.MONGODB_CONNECTION;
@@ -15,7 +15,7 @@ if (!mongoDbConnection) {
 }
 
 app.listen(port, () => {
-  debug(chalk.green(`Listening on http://localhost:${port}`));
+  debug(chalk.blue(`Listening on http://localhost:${port}`));
 });
 
 try {
