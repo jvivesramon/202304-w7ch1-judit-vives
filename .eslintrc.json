@@ -23,6 +23,12 @@
       }
     },
     {
+      "files": "index.ts",
+      "rules": {
+        "@typescript-eslint/no-unsafe-call": "off"
+      }
+    },
+    {
       "files": ["src/**/schema/*.ts"],
       "rules": {
         "@typescript-eslint/naming-convention": "off"
