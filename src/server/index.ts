@@ -6,9 +6,10 @@ import { generalError, notFoundError } from "./middleware/errorControllers.js";
 
 export const app = express();
 
+const allowedHeaders = "https://202304-w6chwe-judit-vives-isaias.netlify.app/";
+
 const corsOptions = {
-  origin:
-    "mongodb+srv://jvivesramon:fantasia@fantasia.w5j49w4.mongodb.net/robotsIJ",
+  origin: allowedHeaders,
   optionsSuccessStatus: 200,
   methods: "GET, HEAD, PUT, PATCH, POST, DELETE",
   allowedHeaders: "Content-Type, Authorization",
