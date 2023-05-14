@@ -19,7 +19,7 @@ export interface RobotDatabaseStructure extends RobotStructure {
 }
 
 export interface RobotssDataStructure {
-  students: RobotStructure[];
+  robots: RobotStructure[];
 }
 
 export interface RobotsMockStructure extends RobotStructure {
