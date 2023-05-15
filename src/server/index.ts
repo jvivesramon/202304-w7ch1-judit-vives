@@ -3,6 +3,7 @@ import cors from "cors";
 import morgan from "morgan";
 import { robotsRouter } from "./routers/robotsRouter.js";
 import { generalError, notFoundError } from "./middleware/errorControllers.js";
+import auth from "./middleware/authControllers.js";
 
 export const app = express();
 
@@ -23,7 +24,7 @@ app.use(morgan("dev"));
 
 app.use(express.json());
 
-app.use("/robots", robotsRouter);
+app.use("/robots", auth, robotsRouter);
 
 app.use(notFoundError);
 
