@@ -36,4 +36,18 @@ describe("Given an auth controller", () => {
       expect(next).toHaveBeenCalledWith(expectedError);
     });
   });
+
+  describe("When it receives an authorization header without bearer and a next function", () => {
+    test("Then it should call the received next function with a 401 'Missing token", () => {
+      const req: Pick<Request, "header"> = {
+        header: jest.fn().mockReturnValue(token),
+      };
+
+      const expectedError = new CustomError(401, "Missing token");
+
+      auth(req as Request, res as Response, next);
+
+      expect(next).toHaveBeenCalledWith(expectedError);
+    });
+  });
 });
