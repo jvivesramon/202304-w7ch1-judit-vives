@@ -1,7 +1,7 @@
 import { type Response, type Request } from "express";
 import { getRobots } from "./robotsControllers.js";
-import Robot from "../../database/schema/Robot.js";
-import robotsMock from "../../data/robotsMock.js";
+import Robot from "../../../database/schema/Robot.js";
+import robotsMock from "../../../data/robotsMock.js";
 
 describe("Given a getRobots controller", () => {
   type CustomResponse = Pick<Response, "status" | "json">;
@@ -38,7 +38,7 @@ describe("Given a getRobots controller", () => {
   });
 
   describe("When it receives a next function and the exec method rejects with an 'Fatal Error' error", () => {
-    test("Then it should call next function with error 'Fatal Error'", async () => {
+    test("Then it should call next function with error 'General Error'", async () => {
       const error = new Error("General error");
 
       Robot.find = jest.fn().mockReturnValue({
