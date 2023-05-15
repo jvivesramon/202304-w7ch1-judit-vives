@@ -4,6 +4,7 @@ import morgan from "morgan";
 import { robotsRouter } from "./routers/robotsRouter.js";
 import { generalError, notFoundError } from "./middleware/errorControllers.js";
 import auth from "./middleware/authControllers.js";
+import { userRouter } from "./routers/userRouter.js";
 
 export const app = express();
 
@@ -23,6 +24,8 @@ app.disable("x-powered-by");
 app.use(morgan("dev"));
 
 app.use(express.json());
+
+app.use("/user", userRouter);
 
 app.use("/robots", auth, robotsRouter);
 
