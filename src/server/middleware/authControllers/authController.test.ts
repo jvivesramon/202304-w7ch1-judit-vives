@@ -1,7 +1,7 @@
 import { type Response, type Request } from "express";
 import jwt from "jsonwebtoken";
 import auth from "./authControllers.js";
-import CustomError from "../CustomError.js";
+import CustomError from "../../../types/CustomError.js";
 
 beforeEach(() => {
   jest.clearAllMocks();
@@ -23,8 +23,7 @@ describe("Given an auth controller", () => {
 
       auth(req as Request, res as Response, next);
 
-      expect(req.header).toHaveBeenCalled();
-      expect(next).toHaveBeenCalled();
+      expect(next).toHaveBeenCalledWith();
     });
   });
 
