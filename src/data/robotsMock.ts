@@ -1,7 +1,7 @@
 import { Types } from "mongoose";
 import { type RobotsMockStructure } from "./types.js";
 
-const robotsMock: RobotsMockStructure[] = [
+export const robotsMock: RobotsMockStructure[] = [
   {
     _id: new Types.ObjectId(),
     name: "R2-D2",
@@ -17,4 +17,7 @@ const robotsMock: RobotsMockStructure[] = [
   },
 ];
 
-export default robotsMock;
+export const usernameMock = {
+  username: "Jud",
+  password: "nothing",
+};

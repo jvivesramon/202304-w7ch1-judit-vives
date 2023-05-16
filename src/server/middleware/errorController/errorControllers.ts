@@ -1,7 +1,7 @@
-import "../../loadEnviroment.js";
+import "../../../loadEnviroment.js";
 import createDebug from "debug";
 import { type NextFunction, type Request, type Response } from "express";
-import CustomError from "../CustomError.js";
+import CustomError from "../../../types/CustomError.js";
 
 const debugError = createDebug("robots-api:server:middleware:errorControllers");
 

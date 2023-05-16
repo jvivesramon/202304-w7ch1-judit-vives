@@ -3,7 +3,7 @@ import { type UserCredencialAlias } from "./types";
 import jwt, { type JwtPayload } from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import { User } from "../../../database/schema/User.js";
-import CustomError from "../../CustomError.js";
+import CustomError from "../../../types/CustomError.js";
 
 const loginUser = async (
   req: UserCredencialAlias,
@@ -13,7 +13,7 @@ const loginUser = async (
   const { username, password } = req.body;
 
   try {
-    const user = await User.findOne({ username, password });
+    const user = await User.findOne({ username });
 
     if (!user || !(await bcrypt.compare(password, user.password))) {
       const customError = new CustomError(401, "Wrong credentials");

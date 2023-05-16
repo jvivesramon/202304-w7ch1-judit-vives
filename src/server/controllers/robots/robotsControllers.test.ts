@@ -1,7 +1,7 @@
 import { type Response, type Request } from "express";
 import { getRobots } from "./robotsControllers.js";
 import Robot from "../../../database/schema/Robot.js";
-import robotsMock from "../../../data/robotsMock.js";
+import { robotsMock } from "../../../data/robotsMock.js";
 
 describe("Given a getRobots controller", () => {
   type CustomResponse = Pick<Response, "status" | "json">;

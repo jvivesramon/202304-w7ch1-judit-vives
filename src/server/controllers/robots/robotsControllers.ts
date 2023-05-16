@@ -2,7 +2,7 @@ import { type NextFunction, type Request, type Response } from "express";
 import Robot from "../../../database/schema/Robot.js";
 
 export const getRobots = async (
-  req: Request,
+  _req: Request,
   res: Response,
   next: NextFunction
 ) => {
