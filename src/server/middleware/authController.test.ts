@@ -23,6 +23,7 @@ describe("Given an auth controller", () => {
 
       auth(req as Request, res as Response, next);
 
+      expect(req.header).toHaveBeenCalled();
       expect(next).toHaveBeenCalled();
     });
   });
