@@ -13,7 +13,7 @@ export const app = express();
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://202304-w7ch1-judit-vives-front.netlify.app/",
+  "https://202304-w7ch1-judit-vives-front.netlify.app",
 ];
 
 const corsOptions: cors.CorsOptions = {
